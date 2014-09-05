@@ -36,18 +36,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   }
 }
 
-.item-heading {
-  .item-heading-title {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  .item-heading-sub:last-child {
-    margin-top: 0;
-    margin-bottom: $item-padding;
-  }
-}
-
-
 .item,
 .item h1,
 .item h2,
@@ -69,3 +57,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
   white-space: normal;
 }
 
+.item .badge {
+  right: ($item-padding);
+}

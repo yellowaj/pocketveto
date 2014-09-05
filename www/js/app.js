@@ -30,32 +30,57 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       controller: 'AppCtrl'
     })
 
-    .state('app.requests', {
-      url: "/requests",
+    .state('app.receivedRequest', {
+      url: "/receivedRequest",
       views: {
         'menuContent' :{
-          templateUrl: "templates/requests.html"
+          templateUrl: "templates/receivedRequest.html"
         }
       }
     })
 
-    .state('app.request', {
-      url: "/request",
+    .state('app.receivedRequests', {
+      url: "/receivedRequests",
       views: {
         'menuContent' :{
-          templateUrl: "templates/request.html"
+          templateUrl: "templates/receivedRequests.html"
         }
       }
     })
 
-    .state('app.send', {
-      url: "/send",
+    .state('app.sendRequest', {
+      url: "/sendRequest",
       views: {
         'menuContent' :{
-          templateUrl: "templates/send.html"
+          templateUrl: "templates/sendRequest.html"
         }
       }
     })
+
+    .state('app.sentRequest', {
+      url: "/sentRequest",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/sentRequest.html"
+        }
+      }
+    })
+
+    .state('app.sentRequests', {
+      url: "/sentRequests",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/sentRequests.html"
+        }
+      }
+    })
+
+
+
+
+
+
+
     .state('app.playlists', {
       url: "/playlists",
       views: {
@@ -76,6 +101,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/app/sentRequests');
 });
 
