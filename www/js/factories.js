@@ -58,4 +58,23 @@ angular.module('pocketveto.factories', [])
       return $firebase(new Firebase(path))
     }
   }
+})
+
+.factory('Request', function($firebase) {
+  var ref = $firebase(new Firebase("https://pocketveto.firebaseio.com/requests"));
+
+  return {
+    create: function(request) {
+      return ref.$child(request.id).$set(request);
+    },
+
+    all: function() {
+      return ref.$asArray();
+    },
+
+    get: function(id) {
+      var path = ["https://pocketveto.firebaseio.com/requests", id].join('/');
+      return $firebase(new Firebase(path))
+    }
+  }
 });
