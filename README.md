@@ -1,26 +1,16 @@
-Ionic App Base
-=====================
+PocketVeto
+==========
 
-A starting project for Ionic that optionally supports using custom SCSS.
+Ideas:
 
-## Using this project
-
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
-
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
-
-```bash
-$ npm install -g ionic
-```
-
-Then run:
-
-```bash
-$ ionic start myProject tabs
-```
-
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
-
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+- Limit number of vetos and daily requests 
+- Time limit for veto (1min)
+- Simple yeah/nay, thumbs up/down
+- Push notifications
+- Dashboard of all requests and veto results, # of vetos and requests left
+- You vs. your spouse veto report
+- Punch card UI
+- Signup and invite spouse
+- Reason for request and/or veto
+- Percentage of vetos
 
