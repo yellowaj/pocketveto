@@ -29,33 +29,31 @@ pocketveto
     })
 
     .state('app.requests', {
-      url: "/search",
+      url: "/requests",
       views: {
         'menuContent' :{
-          templateUrl: "templates/search.html"
+          templateUrl: "templates/requests.html"
+        }
+      }
+    })
+    
+    .state('app.request', {
+      url: "/request",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/request.html"
         }
       }
     })
 
-    .state('app.playlists', {
-      url: "/playlists",
+    .state('app.send', {
+      url: "/send",
       views: {
         'menuContent' :{
-          templateUrl: "templates/playlists.html",
-          controller: 'PlaylistsCtrl'
+          templateUrl: "templates/send.html"
         }
       }
     });
-
-    // .state('app.single', {
-    //   url: "/playlists/:playlistId",
-    //   views: {
-    //     'menuContent' :{
-    //       templateUrl: "templates/playlist.html",
-    //       controller: 'PlaylistCtrl'
-    //     }
-    //   }
-    // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
 });
