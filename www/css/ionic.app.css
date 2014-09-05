@@ -7665,6 +7665,13 @@ a.button {
     margin: 0;
     padding: 0.8em 1.2em; }
 
+.item-heading .item-heading-title {
+  margin-top: 0;
+  margin-bottom: 0; }
+.item-heading .item-heading-sub:last-child {
+  margin-top: 0;
+  margin-bottom: 16px; }
+
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
   overflow: normal;
   text-overflow: none;
