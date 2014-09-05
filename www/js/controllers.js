@@ -1,48 +1,64 @@
-angular.module('starter.controllers', [])
+angular.module('pocketveto.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  // Form data for the login modal
+.controller('AppCtrl', function($scope, User) {
+})
+
+.controller('AuthCtrl', function($scope, Auth, User) {
+
+  $scope.action = null;
   $scope.loginData = {};
+  $scope.registerData = {};
+  $scope.user = null;
 
-  // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
+  $scope.setAction = function(type) {
+    $scope.action = type;
+  };
+
+  Auth.onLogin(function(e, user) {
+    console.log("Logged in successfully: ", user);
+    $scope.user = User.get(user.id).$asObject();
   });
 
-  // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
-    $scope.modal.hide();
+  Auth.onLogout(function(e, user) {
+    console.log("Logged out successfully");
+    $scope.user = null;
+  });
+
+  Auth.onLoginError(function(e, error) {
+    console.log("Error logging in: ", error);
+  });
+
+  $scope.loginUser = function() {
+    Auth.login($scope.loginData);
   };
 
-  // Open the login modal
-  $scope.login = function() {
-    $scope.modal.show();
+  $scope.createUser = function() {
+    Auth.createUser($scope.registerData).then(function(user) {
+      console.log("User successfully created: ", user);
+      var test = User.create(user);
+      console.log(test);
+      $scope.user = user;
+    });
   };
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
+  $scope.logoutUser = function() {
+    Auth.logout();
+  };  
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
-
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+  window.scope = $scope;
+  window.User = User;
 });
+
+// .controller('PlaylistsCtrl', function($scope) {
+//   $scope.playlists = [
+//     { title: 'Reggae', id: 1 },
+//     { title: 'Chill', id: 2 },
+//     { title: 'Dubstep', id: 3 },
+//     { title: 'Indie', id: 4 },
+//     { title: 'Rap', id: 5 },
+//     { title: 'Cowbell', id: 6 }
+//   ];
+// })
+
+// .controller('PlaylistCtrl', function($scope, $stateParams) {
+// });
