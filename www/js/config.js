@@ -32,7 +32,7 @@ pocketveto
       controller: 'RequestsCtrl',
       views: {
         'menuContent' :{
-          templateUrl: "templates/receivedRequests.html"
+          templateUrl: "templates/requests/received.html"
         }
       }
     })
@@ -42,7 +42,17 @@ pocketveto
       controller: 'RequestsCtrl',
       views: {
         'menuContent' :{
-          templateUrl: "templates/sendRequest.html"
+          templateUrl: "templates/requests/new.html"
+        }
+      }
+    })
+
+    .state('app.sentRequests', {
+      url: "/requests/sent",
+      controller: 'RequestsCtrl',
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/requests/sent.html"
         }
       }
     })
@@ -52,30 +62,12 @@ pocketveto
       controller: 'RequestsCtrl',
       views: {
         'menuContent' :{
-          templateUrl: "templates/receivedRequest.html"
-        }
-      }
-    })
-
-    .state('app.sentRequest', {
-      url: "/sentRequest",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/sentRequest.html"
-        }
-      }
-    })
-
-    .state('app.sentRequests', {
-      url: "/sentRequests",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/sentRequests.html"
+          templateUrl: "templates/requests/show.html"
         }
       }
     })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/sentRequests');
+  $urlRouterProvider.otherwise('/app/requests/sent');
 });
 

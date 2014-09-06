@@ -5,7 +5,7 @@
       <div class="item item-icon-left">
         <i class="icon ion-ios7-stopwatch"></i>
         <h2>{{ request.name }}</h2>
-        <p>Cost: <a href="{{ request.url }}">{{ request.price | currency }}</a></p>
+        <p ng-show="request.price">Cost: <a href="{{ request.url }}">{{ request.price | currency }}</a></p>
       </div>
 
       <div class="item item-body">

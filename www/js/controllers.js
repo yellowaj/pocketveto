@@ -21,7 +21,6 @@ angular.module('pocketveto.controllers', [])
 
   $scope.createRequest = function(request) {
     Request.create(request).then(function(newReq) {
-      // todo: go to newly created request page
       var path = ["requests", newReq.name()].join('/');
       $state.go(path);
     });
@@ -46,7 +45,7 @@ angular.module('pocketveto.controllers', [])
   window.scope = $scope;
 })
 
-.controller('AuthCtrl', function($scope, Auth, User) {
+.controller('AuthCtrl', function($scope, $state, Auth, User) {
 
   $scope.action = null;
   $scope.loginData = {};
@@ -59,11 +58,14 @@ angular.module('pocketveto.controllers', [])
 
   Auth.onLogin(function(e, user) {
     console.log("Logged in successfully: ", user);
-    $scope.user = User.get(user.id).$asObject();
+    $scope.user = User.get(user.id);
+    $scope.user.login();
+    $state.go('app.receivedRequests');
   });
 
   Auth.onLogout(function(e, user) {
     console.log("Logged out successfully");
+    $scope.user.logout();
     $scope.user = null;
   });
 
@@ -76,11 +78,11 @@ angular.module('pocketveto.controllers', [])
   };
 
   $scope.createUser = function() {
-    Auth.createUser($scope.registerData).then(function(user) {
-      console.log("User successfully created: ", user);
-      var test = User.create(user);
-      console.log(test);
-      $scope.user = user;
+    Auth.createUser($scope.registerData).then(function(authUser) {
+      console.log("User successfully created: ", authUser);
+      $scope.user = User.create(authUser);
+      $scope.user.login();
+      $state.go('app.receivedRequests');
     });
   };
 
@@ -89,16 +91,3 @@ angular.module('pocketveto.controllers', [])
   };  
 });
 
-// .controller('PlaylistsCtrl', function($scope) {
-//   $scope.playlists = [
-//     { title: 'Reggae', id: 1 },
-//     { title: 'Chill', id: 2 },
-//     { title: 'Dubstep', id: 3 },
-//     { title: 'Indie', id: 4 },
-//     { title: 'Rap', id: 5 },
-//     { title: 'Cowbell', id: 6 }
-//   ];
-// })
-
-// .controller('PlaylistCtrl', function($scope, $stateParams) {
-// });

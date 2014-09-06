@@ -6,11 +6,11 @@
     <form ng-submit="createRequest(newRequest)">
       <label class="item item-input">
         <span class="input-label">Item Name</span>
-        <input type="text" ng-model="newRequest.name">
+        <input type="text" ng-model="newRequest.name" required>
       </label>
       <label class="item item-button-right">
         Image
-        <button class="button button-positive">
+        <button class="button button-positive" type="button">
           <i class="icon ion-camera"></i>
         </button>
       </label>

@@ -43,21 +43,45 @@ angular.module('pocketveto.factories', [])
   }
 })
 
-.factory('User', function($firebase) {
+.factory('User', function($firebase, $q) {
 
-  return {
-    create: function(user) {
-      var ref = $firebase(new Firebase("https://pocketveto.firebaseio.com/users"));
-      return ref.$child(user.id).$set({
-        email: user.email
-      });
-    },
-
-    get: function(id) {
-      var path = ["https://pocketveto.firebaseio.com/users", id].join('/');
-      return $firebase(new Firebase(path))
-    }
+  function User(options) {
+    this.id = options.id;
+    this.email = options.email;
+    this.signedIn = options.signedIn || false;
   }
+
+  User.create = function(authUser) {
+    var path = ["https://pocketveto.firebaseio.com/users", authUser.id].join('/');
+    var deferred = $q.defer();
+
+    $firebase(new Firebase(path)).$set({
+      id: authUser.id,
+      email: authUser.email
+    }).then(function(data) {
+      User.get(authUser.id).$loaded().then(function(data) { 
+        deferred.resolve(new User(data));
+      });
+    }, function(errors) {
+      deferred.reject(errors);
+    });
+    return deferred.promise;
+  };
+
+  User.get = function(id) {
+    var path = ["https://pocketveto.firebaseio.com/users", id].join('/');
+    return $firebase(new Firebase(path)).$asObject();
+  };
+
+  User.prototype.login = function() {
+    this.signedIn = true;
+  };
+
+  User.prototype.logout = function() {
+    this.signedIn = false;
+  };
+
+  return User;
 })
 
 .factory('Request', function($firebase) {
@@ -76,7 +100,7 @@ angular.module('pocketveto.factories', [])
 
     get: function(id) {
       var path = ["https://pocketveto.firebaseio.com/requests", id].join('/');
-      return $firebase(new Firebase(path)).$asObject()
+      return $firebase(new Firebase(path)).$asObject();
     }
   }
 });
