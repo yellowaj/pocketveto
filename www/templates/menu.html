@@ -1,5 +1,4 @@
 <ion-side-menus>
-
   <ion-pane ion-side-menu-content>
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>
@@ -11,11 +10,8 @@
     <header class="bar bar-header bar-stable">
       <h1 class="title">Navigation</h1>
     </header>
-    <ion-content class="has-header">
+    <ion-content ng-controller="RequestsCtrl" class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close href="#/login">
-          Login
-        </ion-item>
         <ion-item nav-clear menu-close href="#/app/sentRequests">
           Sent Requests
           <!-- <span class="badge badge-dark">1</span> -->
@@ -25,7 +21,7 @@
         </ion-item>
         <ion-item nav-clear menu-close href="#/app/requests/received">
           Received Requests
-          <span class="badge badge-dark">1</span>
+          <span ng-show="pendingRequests.length > 0" class="badge badge-dark">{{ pendingRequests.length }}</span>
         </ion-item>
       </ion-list>
     </ion-content>
