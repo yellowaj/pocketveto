@@ -37,7 +37,8 @@ pocketveto
     })
 
     .state('app.receivedRequests', {
-      url: "/receivedRequests",
+      url: "/requests/received",
+      controller: 'RequestsCtrl',
       views: {
         'menuContent' :{
           templateUrl: "templates/receivedRequests.html"

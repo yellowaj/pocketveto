@@ -11,14 +11,16 @@ angular.module('pocketveto.controllers', [])
     justification: null
   };
 
-  $scope.requests = Request.all();
+  $scope.pendingRequests = Request.all();
 
   $scope.createRequest = function(request) {
     Request.create(request).then(function(newReq) {
-      # todo: go to newly created request page
+      // todo: go to newly created request page
       var id = newReq.name();
     });
   };
+
+  window.scope = $scope;
 })
 
 .controller('AuthCtrl', function($scope, Auth, User) {
@@ -62,8 +64,6 @@ angular.module('pocketveto.controllers', [])
   $scope.logoutUser = function() {
     Auth.logout();
   };  
-
-  window.scope = $scope;
 });
 
 // .controller('PlaylistsCtrl', function($scope) {

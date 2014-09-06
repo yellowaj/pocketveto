@@ -66,6 +66,7 @@ angular.module('pocketveto.factories', [])
   return {
     create: function(request) {
       request.status = 'pending';
+      request.approved = false;
       return ref.$push(request);
     },
 
