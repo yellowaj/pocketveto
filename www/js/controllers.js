@@ -15,7 +15,7 @@ angular.module('pocketveto.controllers', [])
 
   $scope.createRequest = function(request) {
     Request.create(request).then(function(newReq) {
-      # todo: go to newly created request page
+      // todo: go to newly created request page
       var id = newReq.name();
     });
   };
