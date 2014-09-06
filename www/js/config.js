@@ -47,6 +47,7 @@ pocketveto
 
     .state('app.sendRequest', {
       url: "/requests/new",
+      controller: 'RequestsCtrl',
       views: {
         'menuContent' :{
           templateUrl: "templates/sendRequest.html"

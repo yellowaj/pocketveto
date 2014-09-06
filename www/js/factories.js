@@ -65,7 +65,8 @@ angular.module('pocketveto.factories', [])
 
   return {
     create: function(request) {
-      return ref.$child(request.id).$set(request);
+      request.status = 'pending';
+      return ref.$push(request);
     },
 
     all: function() {

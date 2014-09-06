@@ -4,7 +4,21 @@ angular.module('pocketveto.controllers', [])
 })
 
 .controller('RequestsCtrl', function($scope, Request) {
+  $scope.newRequest = {
+    name: null,
+    price: null,
+    url: null,
+    justification: null
+  };
+
   $scope.requests = Request.all();
+
+  $scope.createRequest = function(request) {
+    Request.create(request).then(function(newReq) {
+      # todo: go to newly created request page
+      var id = newReq.name();
+    });
+  };
 })
 
 .controller('AuthCtrl', function($scope, Auth, User) {
