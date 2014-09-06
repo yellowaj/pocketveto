@@ -7656,15 +7656,22 @@ a.button {
 .notice {
   background-color: #444;
   color: #fff;
-  margin-bottom: 1em; }
-  .notice > p {
-    color: #fff;
-    font-size: 0.8em;
-    font-weight: bold;
-    line-height: 1.3;
-    margin: 0;
-    padding: 0.8em 1.2em;
-    text-align: center; }
+  font-size: 0.8em;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-top: 16px;
+  padding: 16px;
+  text-align: center; }
+
+.notice-heading {
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 0; }
+
+.notice-content {
+  color: #fff;
+  margin: 0 0 5px;
+  padding: 0; }
 
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {
   overflow: normal;
