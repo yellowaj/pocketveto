@@ -27,41 +27,52 @@ pocketveto
       controller: 'AppCtrl'
     })
 
-    .state('app.requests', {
-      url: "/requests",
-      controller: 'RequestsCtrl',
+    .state('app.receivedRequest', {
+      url: "/receivedRequest",
       views: {
-        'menuContent': {
-          templateUrl: "templates/requests.html"
-        }
-      }
-      // ,
-      // resolve: {
-      //   requestsData: function(Request) {
-      //     return Request.all()
-      //   }
-      // }
-    })
-
-    .state('app.request', {
-      url: "/request",
-      views: {
-        'menuContent': {
-          templateUrl: "templates/request.html"
+        'menuContent' :{
+          templateUrl: "templates/receivedRequest.html"
         }
       }
     })
 
-    .state('app.send', {
-      url: "/send",
+    .state('app.receivedRequests', {
+      url: "/receivedRequests",
       views: {
-        'menuContent': {
-          templateUrl: "templates/send.html"
+        'menuContent' :{
+          templateUrl: "templates/receivedRequests.html"
         }
       }
-    });
+    })
+
+    .state('app.sendRequest', {
+      url: "/sendRequest",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/sendRequest.html"
+        }
+      }
+    })
+
+    .state('app.sentRequest', {
+      url: "/sentRequest",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/sentRequest.html"
+        }
+      }
+    })
+
+    .state('app.sentRequests', {
+      url: "/sentRequests",
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/sentRequests.html"
+        }
+      }
+    })
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/requests');
+  $urlRouterProvider.otherwise('/app/sentRequests');
 });
 
