@@ -19,17 +19,11 @@
         Past
       </div>
       <div ng-repeat="request in pastRequests">
-        <a href="#/app/requests/{{ request.$id }}" class="item item-icon-right assertive">
+        <a href="#/app/requests/{{ request.$id }}" class="item item-icon-right" ng-class="{ assertive: !request.approved, balanced: request.approved }">
           {{ request.name }}
           <span class="color-demo"></span>
-          <i class="icon assertive ion-thumbsdown"></i>
+          <i class="icon" ng-class="vetoCssClass(request)"></i>
         </a>
-
-        <!-- <a href="#/app/receivedRequest" class="item item-icon-right balanced">
-          Sunglasses
-          <span class="color-demo"></span>
-          <i class="icon ion-thumbsup balanced"></i>
-        </a> -->
       </div>
     </div>
   </ion-content>

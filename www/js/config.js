@@ -27,15 +27,6 @@ pocketveto
       controller: 'AppCtrl'
     })
 
-    .state('app.receivedRequest', {
-      url: "/receivedRequest",
-      views: {
-        'menuContent' :{
-          templateUrl: "templates/receivedRequest.html"
-        }
-      }
-    })
-
     .state('app.receivedRequests', {
       url: "/requests/received",
       controller: 'RequestsCtrl',
@@ -52,6 +43,16 @@ pocketveto
       views: {
         'menuContent' :{
           templateUrl: "templates/sendRequest.html"
+        }
+      }
+    })
+
+    .state('app.receivedRequest', {
+      url: "/requests/:requestId",
+      controller: 'RequestsCtrl',
+      views: {
+        'menuContent' :{
+          templateUrl: "templates/receivedRequest.html"
         }
       }
     })

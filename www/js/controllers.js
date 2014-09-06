@@ -3,7 +3,7 @@ angular.module('pocketveto.controllers', [])
 .controller('AppCtrl', function($scope) {
 })
 
-.controller('RequestsCtrl', function($scope, Request) {
+.controller('RequestsCtrl', function($scope, $state, $stateParams, Request) {
   $scope.newRequest = {
     name: null,
     price: null,
@@ -11,13 +11,36 @@ angular.module('pocketveto.controllers', [])
     justification: null
   };
 
-  $scope.pendingRequests = Request.all();
+  $scope.requestId = $stateParams.requestId;
+  $scope.request = Request.get($scope.requestId);
+
+  Request.all().$loaded().then(function(data) {
+    $scope.pendingRequests = _.where(data, { status: 'pending' });
+    $scope.pastRequests = _.where(data, { status: 'past' });
+  });
 
   $scope.createRequest = function(request) {
     Request.create(request).then(function(newReq) {
       // todo: go to newly created request page
-      var id = newReq.name();
+      var path = ["requests", newReq.name()].join('/');
+      $state.go(path);
     });
+  };
+
+  $scope.approveRequest = function(request) {
+    request.status = 'past';
+    request.approved = true;
+    request.$save();
+  };
+
+  $scope.vetoRequest = function(request) {
+    request.status = 'past';
+    request.approved = false;
+    request.$save();
+  };
+
+  $scope.vetoCssClass = function(request) {
+    return request.approved ? 'balanced ion-thumbsup' : 'assertive ion-thumbsdown'
   };
 
   window.scope = $scope;

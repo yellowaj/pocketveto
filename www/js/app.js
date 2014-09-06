@@ -1,1 +1,1 @@
-var pocketveto = angular.module('pocketveto', ['ionic', 'firebase', 'pocketveto.controllers', 'pocketveto.factories']);
+var pocketveto = angular.module('pocketveto', ['ionic', 'ui.router', 'firebase', 'pocketveto.controllers', 'pocketveto.factories']);

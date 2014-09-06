@@ -76,7 +76,7 @@ angular.module('pocketveto.factories', [])
 
     get: function(id) {
       var path = ["https://pocketveto.firebaseio.com/requests", id].join('/');
-      return $firebase(new Firebase(path))
+      return $firebase(new Firebase(path)).$asObject()
     }
   }
 });
