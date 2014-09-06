@@ -1,6 +1,10 @@
 angular.module('pocketveto.controllers', [])
 
-.controller('AppCtrl', function($scope, User) {
+.controller('AppCtrl', function($scope) {
+})
+
+.controller('RequestsCtrl', function($scope, Request) {
+  $scope.requests = Request.all();
 })
 
 .controller('AuthCtrl', function($scope, Auth, User) {
@@ -46,7 +50,6 @@ angular.module('pocketveto.controllers', [])
   };  
 
   window.scope = $scope;
-  window.User = User;
 });
 
 // .controller('PlaylistsCtrl', function($scope) {
